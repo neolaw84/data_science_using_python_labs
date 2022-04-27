@@ -2,6 +2,8 @@ import pandas as pd
 import numpy as np
 import random
 
+from matplotlib import pyplot
+
 random.seed(42)
 
 def load_boston_dataset():
@@ -32,3 +34,19 @@ def load_boston_dataset():
     data = np.hstack([raw_df.values[::2, :], raw_df.values[1::2, :3]])
     df = pd.DataFrame(data=data, columns=columns_2_desc.keys())
     return df
+
+def show_scatter_plot(x, y, title, xlabel, ylabel):
+    pyplot.scatter(x, y)
+    pyplot.title(title)
+    pyplot.xlabel(xlabel)
+    pyplot.ylabel(ylabel)
+    pyplot.show()
+    
+
+def show_scatter_plot_with_line(x, y, title, xlabel, ylabel, a, b):
+    pyplot.scatter(x, y)
+    pyplot.plot(x, a*x + b, color="red")
+    pyplot.title(title)
+    pyplot.xlabel(xlabel)
+    pyplot.ylabel(ylabel)
+    pyplot.show()
