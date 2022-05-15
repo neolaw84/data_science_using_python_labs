@@ -1,5 +1,6 @@
 from io import StringIO
 from matplotlib.pyplot import gray
+from matplotlib import pyplot as plt
 import requests
 
 import cv2
@@ -38,3 +39,13 @@ def get_image(url=None, grayscale=True):
         if grayscale:
             img = img @ [0.2126, 0.7152, 0.0722]
     return img
+
+X_0 = 0
+X_1 = 1
+def plot_points_and_vectors(my_points, xlim=(0.0, 1.1), ylim=(0.0, 1.1)):
+    plt.scatter(x=my_points[X_0], y=my_points[X_1])
+    for x_0, x_1 in zip(my_points[X_0, :], my_points[X_1, :]):
+        plt.arrow(0, 0, dx=x_0, dy=x_1, )
+    plt.xlim(xlim)
+    plt.ylim(ylim)
+    plt.show()
